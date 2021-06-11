@@ -1,0 +1,24 @@
+{
+  "name": "touch",
+  "version": "1.0.0",
+  "description": "touch is a cli tool for react apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "test "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gazzar97/touch.git"
+  },
+  "keywords": [
+    "cli",
+    "react",
+    "touch"
+  ],
+  "author": "gazzar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gazzar97/touch/issues"
+  },
+  "homepage": "https://github.com/gazzar97/touch#readme"
+}
