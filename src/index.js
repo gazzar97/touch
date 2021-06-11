@@ -1,5 +1,6 @@
 import arg from 'arg';
 import inquirer from 'inquirer';
+import {generateComponent} from './util/generateComponent';
 
 function parseArgumentsIntoOptions(rowArgs){
 	const args = arg(
@@ -7,11 +8,10 @@ function parseArgumentsIntoOptions(rowArgs){
 			'--git':Boolean,
 			'--yes':Boolean,
 			'--install':Boolean,
-			'--generateComponent':Boolean,
+			'--gc':Boolean,
 			'-g':'--git',
 			'-y':'--yes',
 			'-i':'--install',
-			'-c':'--generateComponent'
 
 		},
 		{
@@ -23,7 +23,8 @@ function parseArgumentsIntoOptions(rowArgs){
 		git: args['--git'] || false,
 		template: args._[0],
 		runInstall: args['--install'] || false,
-		generateComponent: args['--generateComponent'] || false
+		generateComponent: args['--gc'] || false,
+		
 	};
 
 
@@ -66,6 +67,8 @@ async function promptForMissingOptions(options){
 
 export async function index(args) {
 	let options = parseArgumentsIntoOptions(args)
-	options = await promptForMissingOptions(options);
-	console.log(options);
-   }
+	if(options.generateComponent){
+		generateComponent(args)
+	}
+	
+}
