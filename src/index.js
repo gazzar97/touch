@@ -1,6 +1,7 @@
 import arg from 'arg';
 import inquirer from 'inquirer';
 import {generateComponent} from './util/generateComponent';
+import {generateStyleSheet} from './util/generateStyleSheet';
 
 function parseArgumentsIntoOptions(rowArgs){
 	const args = arg(
@@ -8,7 +9,8 @@ function parseArgumentsIntoOptions(rowArgs){
 			'--git':Boolean,
 			'--yes':Boolean,
 			'--install':Boolean,
-			'--gc':Boolean,
+			'--gc':Boolean, // gc stands for generateComponent
+			'--gs':Boolean, // gs stands for generateStyleSheet
 			'-g':'--git',
 			'-y':'--yes',
 			'-i':'--install',
@@ -24,6 +26,7 @@ function parseArgumentsIntoOptions(rowArgs){
 		template: args._[0],
 		runInstall: args['--install'] || false,
 		generateComponent: args['--gc'] || false,
+		generateStyleSheet: args['--gs'] || false
 		
 	};
 
@@ -67,8 +70,6 @@ async function promptForMissingOptions(options){
 
 export async function index(args) {
 	let options = parseArgumentsIntoOptions(args)
-	if(options.generateComponent){
-		generateComponent(args)
-	}
-	
+	options.generateComponent ? generateComponent(args):'';
+	options.generateStyleSheet? generateStyleSheet(args):'';
 }

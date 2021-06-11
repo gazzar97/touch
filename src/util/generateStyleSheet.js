@@ -23,7 +23,7 @@ function parseArgumentsIntoOptions(rowArgs){
 }
 async function promptForMissingOptions(options){
 
-	const defaultTemplate = "Functional";
+	const defaultTemplate = "css";
 	if(options.skipPrompts){
 		return {
 			...options,
@@ -35,8 +35,8 @@ async function promptForMissingOptions(options){
 		questions.push({
 			type:'list',
 			name:'template',
-			message:'Please choose which component template to use ?',
-			choices: ['Functional','Class'],
+			message:'Please choose which stylesheet mode to use ?',
+			choices: ['css','module.css'],
 			default:defaultTemplate
 		})
 	}
@@ -48,14 +48,14 @@ async function promptForMissingOptions(options){
 }
 function createFile (options){
 	
-	let pathFile = `${process.cwd()}/ ${options.fileName}.js`;
-	let reqPath = path.join(__dirname, '../../');
-	let functionalTemplate = fs.readFileSync(`${reqPath}template/FunctionalTemplate.js`); 
-	let classTemplate = fs.readFileSync(`${reqPath}template/ClassTemplate.js`); 
-	let fileContent =  options.template === 'Functional'? functionalTemplate:classTemplate;
-	fs.writeFileSync(pathFile,fileContent);
+	let pathFile = `${process.cwd()}/ ${options.fileName}.${options.template}`;
+	//let reqPath = path.join(__dirname, '../../');
+	//let functionalTemplate = fs.readFileSync(`${reqPath}template/FunctionalTemplate.js`); 
+	//let classTemplate = fs.readFileSync(`${reqPath}template/ClassTemplate.js`); 
+	//let fileContent =  options.template === 'Functional'? functionalTemplate:classTemplate;
+	fs.writeFileSync(pathFile,'');
 }
-export async function generateComponent(args){
+export async function generateStyleSheet(args){
 	let options = parseArgumentsIntoOptions(args)
 	options = await promptForMissingOptions(options)
 	createFile(options);
