@@ -6,15 +6,10 @@ import {generateStyleSheet} from './util/generateStyleSheet';
 function parseArgumentsIntoOptions(rowArgs){
 	const args = arg(
 		{	
-			'--git':Boolean,
 			'--yes':Boolean,
-			'--install':Boolean,
 			'--gc':Boolean, // gc stands for generateComponent
 			'--gs':Boolean, // gs stands for generateStyleSheet
-			'-g':'--git',
 			'-y':'--yes',
-			'-i':'--install',
-
 		},
 		{
 			argv:rowArgs.slice(2)
@@ -22,9 +17,7 @@ function parseArgumentsIntoOptions(rowArgs){
 	);
 	return {
 		skipPrompts: args['--yes'] || false,
-		git: args['--git'] || false,
 		template: args._[0],
-		runInstall: args['--install'] || false,
 		generateComponent: args['--gc'] || false,
 		generateStyleSheet: args['--gs'] || false
 		
@@ -32,7 +25,7 @@ function parseArgumentsIntoOptions(rowArgs){
 
 
 }
-async function promptForMissingOptions(options){
+/* async function promptForMissingOptions(options){
 	
 	const defaultTemplate = "JavaScript";
 	if(options.skipPrompts){
@@ -66,7 +59,7 @@ async function promptForMissingOptions(options){
 		git: options.git || answers.git
 	}
 
-}
+} */
 
 export async function index(args) {
 	let options = parseArgumentsIntoOptions(args)
