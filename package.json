@@ -2,9 +2,16 @@
   "name": "touch",
   "version": "1.0.0",
   "description": "touch is a cli tool for react apps",
-  "main": "index.js",
+  "main": "scr/index.js",
   "scripts": {
-    "test": "test "
+    "test": "test"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "@gazzar97/touch": "bin/touch",
+    "touch": "bin/touch"
   },
   "repository": {
     "type": "git",
@@ -20,5 +27,10 @@
   "bugs": {
     "url": "https://github.com/gazzar97/touch/issues"
   },
-  "homepage": "https://github.com/gazzar97/touch#readme"
+  "homepage": "https://github.com/gazzar97/touch#readme",
+  "dependencies": {
+    "arg": "^5.0.0",
+    "esm": "^3.2.25",
+    "inquirer": "^8.1.0"
+  }
 }
