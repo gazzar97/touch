@@ -1,6 +1,7 @@
 import arg from 'arg';
 import inquirer from 'inquirer';
 import {generateComponent} from './util/generateComponent';
+import { generateHTMLFile } from './util/generateHTMLFile';
 import {generateStyleSheet} from './util/generateStyleSheet';
 
 function parseArgumentsIntoOptions(rowArgs){
@@ -9,6 +10,7 @@ function parseArgumentsIntoOptions(rowArgs){
 			'--yes':Boolean,
 			'--gc':Boolean, // gc stands for generateComponent
 			'--gs':Boolean, // gs stands for generateStyleSheet
+			'--ghtml':Boolean, // ghtml stands for generate html file 
 			'-y':'--yes',
 		},
 		{
@@ -19,7 +21,8 @@ function parseArgumentsIntoOptions(rowArgs){
 		skipPrompts: args['--yes'] || false,
 		template: args._[0],
 		generateComponent: args['--gc'] || false,
-		generateStyleSheet: args['--gs'] || false
+		generateStyleSheet: args['--gs'] || false,
+		generateHTMLFile: args['--ghtml'] || false
 		
 	};
 
@@ -65,4 +68,5 @@ export async function index(args) {
 	let options = parseArgumentsIntoOptions(args)
 	options.generateComponent ? generateComponent(args):'';
 	options.generateStyleSheet? generateStyleSheet(args):'';
+	options.generateHTMLFile? generateHTMLFile(args):'';
 }

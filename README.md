@@ -24,6 +24,7 @@ open your terminal and hit the following command to create a new stylesheet
 ## Available Commands
 - --gc to create react component  
 - --gs to create stylesheet
+- --ghtml to create html file 
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
