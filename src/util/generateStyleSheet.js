@@ -49,11 +49,11 @@ async function promptForMissingOptions(options){
 function createFile (options){
 	
 	let pathFile = `${process.cwd()}/ ${options.fileName}.${options.template}`;
-	//let reqPath = path.join(__dirname, '../../');
+	let reqPath = path.join(__dirname, '../../');
 	//let functionalTemplate = fs.readFileSync(`${reqPath}template/FunctionalTemplate.js`); 
 	//let classTemplate = fs.readFileSync(`${reqPath}template/ClassTemplate.js`); 
-	//let fileContent =  options.template === 'Functional'? functionalTemplate:classTemplate;
-	fs.writeFileSync(pathFile,'');
+	let fileContent =  fs.readFileSync(`${reqPath}template/style.css`); 
+	fs.writeFileSync(pathFile,fileContent);
 }
 export async function generateStyleSheet(args){
 	let options = parseArgumentsIntoOptions(args)
